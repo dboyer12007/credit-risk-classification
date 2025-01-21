@@ -1,46 +1,43 @@
-Instructions
-The instructions for this Challenge are divided into the following subsections:
+# Module 12 Report
 
-Split the Data into Training and Testing Sets
+## Overview of the Analysis
 
-Create a Logistic Regression Model with the Original Data
+Purpose:
+The analysis aims to predict whether a loan is healthy (label 0) or high-risk (label 1) using a machine learning model.
 
-Write a Credit Risk Analysis Report
+Data Description:
+The dataset includes financial details about loans, such as repayment histories, and the goal is to classify loans based on their risk. There is a noticeable imbalance in the data, with 18,765 healthy loans and only 619 high-risk loans.
 
-Split the Data into Training and Testing Sets
-Open the starter code notebook and use it to complete the following steps:
+Process Overview:
+The features and target labels were assigned to X and y variables, and the data was split into training and testing datasets. After training, the predicted values were evaluated using a confusion matrix to determine the number of false positives and false negatives. A classification report was then generated to assess the performance of the logistic regression model.
 
-Read the lending_data.csv data from the Resources folder into a Pandas DataFrame.
+Methods:
+The LogisticRegression algorithm was used as the baseline model for this analysis.
 
-Create the labels set (y) from the “loan_status” column, and then create the features (X) DataFrame from the remaining columns.
 
-note
-A value of 0 in the “loan_status” column means that the loan is healthy. A value of 1 means that the loan has a high risk of defaulting.
 
-Split the data into training and testing datasets by using train_test_split.
+## Results
 
-Create a Logistic Regression Model with the Original Data
-Use your knowledge of logistic regression to complete the following steps:
+Logistic Regression:
 
-Fit a logistic regression model by using the training data (X_train and y_train).
+Accuracy: 99%
+Precision (healthy loans): 1.00
+Recall (healthy loans): 0.99
+F1-score (healthy loans): 1.00
+Precision (high-risk loans): 0.85
+Recall (high-risk loans): 0.95
+F1-score (high-risk loans): 0.89
+Precision (macro): 0.92
+Recall (macro): 0.97
+F1 (macro): 0.94
+Precision (weighted): 0.99
+Recall (weighted): 0.99
+F1-score (weighted): 0.99
 
-Save the predictions for the testing data labels by using the testing feature data (X_test) and the fitted model.
+## Summary
 
-Evaluate the model’s performance by doing the following:
+The logistic regression model achieved an overall accuracy of 99%, demonstrating strong performance on healthy loans (0) but showing some limitations on high-risk loans (1). While the model is 100% accurate in predicting healthy loans, it is only 85% precise in identifying high-risk loans, with a recall of 95% and an F1-score of 0.89.
 
-Generate a confusion matrix.
+This imbalance could lead to financial risks, as misclassifying high-risk loans (false negatives) may result in significant liabilities. The disparity in the dataset—18,765 healthy loans versus 619 high-risk loans—likely contributes to this issue.
 
-Print the classification report.
-
-Answer the following question: How well does the logistic regression model predict both the 0 (healthy loan) and 1 (high-risk loan) labels?
-
-Write a Credit Risk Analysis Report
-Write a brief report that includes a summary and analysis of the performance of the machine learning models that you used in this homework. You should write this report as the README.md file included in your GitHub repository.
-
-Structure your report by using the report template that Starter_Code.zip includes, ensuring that it contains the following:
-
-An overview of the analysis: Explain the purpose of this analysis.
-
-The results: Using a bulleted list, describe the accuracy score, the precision score, and recall score of the machine learning model.
-
-A summary: Summarize the results from the machine learning model. Include your justification for recommending the model for use by the company. If you don’t recommend the model, justify your reasoning.
+Machine learning algorithms often prioritize the majority class to minimize overall error, which can result in underperformance on the minority class. To address this imbalance, techniques such as oversampling the minority class, class weighting, or using advanced algorithms like Random Forest or Gradient Boosting could be employed. These methods may improve the model’s ability to identify high-risk loans and reduce potential financial losses.
